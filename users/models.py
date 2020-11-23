@@ -11,7 +11,7 @@ class profile(models.Model):
     def __srt__(self):
         return f'{self.user.username} profile'
 
-    def save(self):
+    def save(self, *args, **kwargs):
         super().save()
         img = Image.open(self.image.path)
 
