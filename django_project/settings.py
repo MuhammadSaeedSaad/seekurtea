@@ -21,12 +21,14 @@ BASE_DIR = Path(__file__).resolve(strict=True).parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '0w0m0@2^8)k!#ph8&$331%t#el%$ecz+2+sgbn(i^kt_go-$c('
+# SECRET_KEY = '0w0m0@2^8)k!#ph8&$331%t#el%$ecz+2+sgbn(i^kt_go-$c('
+# SECRET_KEY = '3bedb7d401bdc27f4a8e49ae3e0a6290898da5b69af99a2f'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['seekurtea.herokuapp.com']
 
 
 # Application definition
@@ -135,5 +137,11 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'ebnrshd521@gmail.com'
-EMAIL_HOST_PASSWORD = 'ebargupkkhybdhvh'
+
+# for debuging only
+# EMAIL_HOST_USER = 'ebnrshd521@gmail.com'
+# EMAIL_HOST_PASSWORD = 'ebargupkkhybdhvh'
+
+# for deployment
+EMAIL_HOST_USER = os.environ.get('EMAIL_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS')
